@@ -14,10 +14,10 @@ jobs:
 
       - name: Replace GTM placeholder
         run: |
-          find ./GA4_Test -type f -name "*.html" -exec sed -i "s/GTM_REPLACE_ME/${{ secrets.GTM_API }}/g" {} +
+          find . -type f -name "*.html" -print -exec sed -i "s/GTM_REPLACE_ME/${{ secrets.GTM_API }}/g" {} +
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./GA4_Test
+          publish_dir: ./
